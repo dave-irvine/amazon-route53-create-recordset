@@ -1,0 +1,24 @@
+name: 'Amazon Route53 "Create Recordset" Action for GitHub Actions'
+description: 'Creates a recordset'
+inputs:
+  name:
+    description: "The name of the record to create."
+    required: true
+  type:
+    description: "The type of record to create. One of SOA | A | TXT | NS | CNAME | MX | NAPTR | PTR | SRV | SPF | AAAA | CAA."
+    required: true
+  records:
+    description: "The values of the records to create (comma seperated)."
+    required: true
+  hosted-zone-id:
+    description: "The hosted zone ID in which to create the record."
+    required: true
+  ttl:
+    description: "The TTL of the recordset (defaults to 60)"
+    required: false
+  wait-for-change:
+    description: "Whether or not to wait for the Route53 change to be applied (defaults to true)"
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
